@@ -19,7 +19,7 @@
 
 `npm run build` складывает только публичные файлы сайта в `dist/`.
 
-Push в `main` вызывает существующий workflow `IDyushin/server-kit/.github/workflows/static-site.yml` с именем сайта `hotel`. Workflow собирает статику, загружает её в отдельную staging-папку и вызывает `site-publish`. Доступы хранятся в GitHub Secrets, в исходниках их нет.
+Подготовлен workflow `IDyushin/server-kit/.github/workflows/static-site.yml` с именем сайта `hotel`: он собирает статику, загружает её в отдельную staging-папку и вызывает `site-publish`. Для автоматической публикации нужны GitHub Secrets `DEPLOY_HOST`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_SSH_KEY`; их добавление ожидает отдельного разрешения владельца. Доступов в исходниках нет. Первая публикация выполняется вручную через существующее SSH-подключение.
 
 ## Перед реальным запуском
 
