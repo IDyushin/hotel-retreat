@@ -1,0 +1,19 @@
+sequenceDiagram
+    actor Owner as Владелец
+    participant Vendor as Bnovo / TravelLine
+    participant Bank as Эквайринг и касса
+    participant Site as Сайт
+    Owner->>Vendor: Демо и полная смета на 40 единиц
+    Owner->>Vendor: Проверка брони, отмены и двойной продажи
+    Owner->>Vendor: Ресторан, еда в номер, услуги, уборка, лояльность, API
+    Vendor-->>Owner: Возможности, ограничения и платные партнёры
+    Owner->>Bank: Карты, СБП, возвраты, чеки, совместимость
+    Bank-->>Owner: Полные комиссии и условия
+    Owner->>Owner: Сравнить расходы и выбрать оператора PMS
+    alt Подходят шаблоны TravelLine
+        Owner->>Site: TL Express / готовый сайт
+    else Нужен собственный дизайн
+        Owner->>Site: Свой сайт + модуль выбранной PMS
+    end
+    Owner->>Site: Локальный просмотр и согласование
+    Site-->>Owner: Размещение на сервере, DNS, HTTPS

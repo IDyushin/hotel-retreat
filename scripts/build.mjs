@@ -1,0 +1,10 @@
+import {mkdir, readdir, copyFile, cp} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const dist=path.join(root,'dist');
+await mkdir(dist,{recursive:true});
+const files=(await readdir(root)).filter(name=>name.endsWith('.html')||['app.js','styles.css'].includes(name));
+await Promise.all(files.map(name=>copyFile(path.join(root,name),path.join(dist,name))));
+await cp(path.join(root,'assets'),path.join(dist,'assets'),{recursive:true});
+console.log(`Built ${files.length} page and application files plus local assets in dist/`);

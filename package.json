@@ -1,0 +1,11 @@
+{
+  "name": "hotel-retreat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop hotel prototype and booking-system research",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node preview.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

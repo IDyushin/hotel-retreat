@@ -1,0 +1,21 @@
+sequenceDiagram
+    actor Guest as Гость
+    participant Site as Сайт
+    participant PMS as Выбранная PMS
+    participant Pay as Эквайринг и касса
+    participant Staff as Панель / Telegram
+    participant Services as Ресторан / услуги / лояльность
+    Note over Guest,Services: Целевая схема, доступность зависит от выбранных продуктов
+    Guest->>Site: Даты, гости, категория и тариф
+    Site->>PMS: Наличие, создание брони и временное удержание
+    PMS-->>Site: Идентификатор и срок оплаты
+    Guest->>Pay: Предоплата
+    Pay-->>PMS: Подтверждённый платёж
+    Pay-->>Guest: Чек по применимым правилам
+    PMS-->>Staff: Подтверждённая бронь
+    Guest->>Services: Еда в номер / платная услуга
+    Services->>PMS: Начисление на счёт номера
+    Guest->>Pay: Окончательный расчёт
+    PMS->>Services: Лояльность по правилам программы
+    PMS-->>Staff: Выезд и задача на уборку
+    Staff->>PMS: Номер подготовлен
